@@ -22,7 +22,6 @@ public class App {
 
         /**
          * Given a command, execute the command.
-         * @param command The command to be processed.
          * @return true If the command to exit the app is given, false otherwise.
          */
 
