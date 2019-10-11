@@ -1,13 +1,14 @@
 import java.util.Scanner;
-
+import java.time.LocalDate;
 public class Task {
 
     private String taskName;
-    private String dueDate;
+    private LocalDate dueDate;
+    // the format for local date is (yyyy-MM-dd)
     private String project;
     private boolean isComplete;
 
-    public Task(String taskName, String dueDate, String project) {
+    public Task(String taskName, LocalDate dueDate, String project) {
 
         this.taskName = taskName;
         this.dueDate = dueDate;
@@ -22,11 +23,11 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public String getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -45,15 +46,19 @@ public class Task {
     public void setComplete(boolean complete) {
         isComplete = complete;
     }
+    public String setStatus(){
 
+        if (isComplete){
+            return "DONE";
+        }
+        return "PENDING";
+    }
     @Override
     public String toString() {
-        return "Task{" +
-                ", taskName='" + taskName + '\'' +
-                ", dueDate='" + dueDate + '\'' +
-                ", project='" + project + '\'' +
-                ", isComplete=" + isComplete +
-                '}';
+        return '\'' + taskName + '\'' +
+                ", the due date is '" + dueDate + '\'' +
+                ", the project is '" + project + '\'' +
+                ", status is " + setStatus();
     }
 }
 

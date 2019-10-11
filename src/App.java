@@ -1,39 +1,60 @@
+
+
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
 public class App {
-    private Scanner userOption = new Scanner(System.in);
-    private int option;
-    ToDoList toDoList = new ToDoList();
-    int opt;
+    private Scanner userOption;
+    ToDoList toDoList;
+
+    public App() {
+        userOption = new Scanner(System.in);
+        toDoList = new ToDoList();
+    }
 
     public static void main(String args[]) {
         App app = new App();
         app.runApp();
-
     }
 
-    public int runApp() {
+    public void runApp() {
         printWelcome();
-        printOptions();
-        nextStep();
 
-        if ( opt == 1 ) {
-            this.showListOfTasks();
-        } else if ( opt == 2 ) {
-            this.collectDataToCreateTask();
-        } else if ( opt == 3 ) {
-            toDoList.showMenu(3);
-        } else if ( opt == 4 ) {
-            toDoList.showMenu(4);
-        } else if ( opt >= 5 ) {
-            System.out.println("Sorry invalid option, choose a number 1, 2, 3 or 4");
+        boolean exit = false;
+        while (!exit) {
+            printOptions();
+
+            switch (nextStep()) {
+                case "1":
+                    toDoList.showListOfTasks();
+                    // create switch case for 1 - show list, 2 - sorted by date, 3 - sorted by project, 4 - return tu menu.
+                    toDoList.sortListByDate();
+                    break;
+                case "2":
+                    this.collectDataToCreateTask();
+                    break;
+                case "3":
+                    // to be completed
+                    break;
+                case "4":
+                    // to be completed
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Sorry invalid option :( ");
+                    printReturnMenu();
+                    break;
+            }
+            printReturnMenu();
         }
-        return 0;
-
-
     }
 
+    private void printReturnMenu() {
+        System.out.println("Please, press any key to return to the menu :)");
+        nextStep();
+    }
 
     private void printWelcome() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
@@ -43,45 +64,61 @@ public class App {
 
     private void printOptions() {
         // add tasks after +
-        System.out.println("You have " + " to do and " + " tasks are done");
-        System.out.println("Pick and option");
+        System.out.println("You have " + toDoList.numberOfTasks(false)+ " to do and "
+                + toDoList.numberOfTasks(true)+ " tasks are done");
+        System.out.println("Pick an option");
         // add options
         System.out.println("(1) Show Task List");
         System.out.println("(2) Add New Task");
         System.out.println("(3) Edit Task");
         System.out.println("(4) Save and Quit");
         System.out.println("What do you want to do?");
+        System.out.println("Choose 1, 2, 3, 4\n");
     }
 
-    private void nextStep() {
-        System.out.println("Choose 1, 2, 3, 4");
-        opt = userOption.nextInt();
+    private String nextStep() {
+        //System.out.println("");
+        return userOption.nextLine();
     }
 
-    public ToDoList showListOfTasks(){
-       return toDoList;
-    }
+
     public void collectDataToCreateTask() {
-        Scanner scanner = new Scanner(System.in);
         String taskName;
         String dueDate;
         String project;
 
         System.out.println("Add a task");
-        taskName = scanner.nextLine();
+        taskName = nextStep();
 
         System.out.println("Add a date");
-        dueDate = scanner.nextLine();
+        dueDate = nextStep();
 
         System.out.println("Choose a project");
-        project = scanner.nextLine();
+        project = nextStep();
 
-        Task task = new Task(taskName, dueDate, project);
-        toDoList.addTaskToList(task);
-        System.out.println(task);
+        if ( convertDate(dueDate) == null ) {
+            System.out.println("Invalid date, task was not created");
+        } else {
 
+            Task task = new Task(taskName, convertDate(dueDate), project);
+            toDoList.addTaskToList(task);
+            System.out.println("Your task is " + task.toString());
+        }
     }
 
+    public LocalDate convertDate(String date) {
+        LocalDate convertedDate;
+        try {
+            convertedDate = LocalDate.parse(date);
+            LocalDate currentDate = LocalDate.now();
+            if ( convertedDate.isBefore(currentDate) ) {
+                return null;
+            }
+        } catch (DateTimeException e) {
+            return null;
+        }
+        return convertedDate;
+    }
 
 }
 
