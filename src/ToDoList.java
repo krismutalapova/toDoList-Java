@@ -22,12 +22,18 @@ public class ToDoList {
                .count();
     }
 
+    /**
+     * displays all the added tasks in the list
+     */
     public void showListOfTasks() {
         myTasks.stream()
                 .map(task -> task.toString())
                 .forEach(string -> System.out.println(string));
     }
 
+    /**
+     * sorts the list of tasks by their due date
+     */
     public void sortListByDate() {
         myTasks.stream()
                 .sorted(Comparator.comparing(task -> task.getDueDate()))

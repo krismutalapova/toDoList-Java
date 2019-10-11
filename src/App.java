@@ -1,5 +1,3 @@
-
-
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -22,6 +20,12 @@ public class App {
     public void runApp() {
         printWelcome();
 
+        /**
+         * Given a command, execute the command.
+         * @param command The command to be processed.
+         * @return true If the command to exit the app is given, false otherwise.
+         */
+
         boolean exit = false;
         while (!exit) {
             printOptions();
@@ -29,17 +33,18 @@ public class App {
             switch (nextStep()) {
                 case "1":
                     toDoList.showListOfTasks();
-                    // create switch case for 1 - show list, 2 - sorted by date, 3 - sorted by project, 4 - return tu menu.
+                    //switch case for 1 - show list, 2 - sorted by date, 3 - sorted by project, 4 - return tu menu.
                     toDoList.sortListByDate();
                     break;
                 case "2":
                     this.collectDataToCreateTask();
                     break;
                 case "3":
-                    // to be completed
+                    // switch case 1 - modify task, 2 - mark task as done, 3 - remove task
                     break;
                 case "4":
                     // to be completed
+                    // SAVE task in file and print hejdå
                     exit = true;
                     break;
                 default:
@@ -51,17 +56,18 @@ public class App {
         }
     }
 
-    private void printReturnMenu() {
-        System.out.println("Please, press any key to return to the menu :)");
-        nextStep();
-    }
-
+    /**
+     * Print out a Welcome message to the user.
+     */
     private void printWelcome() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("Welcome to ToDoList App");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
+    /**
+     * Print out a menu to the user.
+     */
     private void printOptions() {
         // add tasks after +
         System.out.println("You have " + toDoList.numberOfTasks(false)+ " to do and "
@@ -76,12 +82,21 @@ public class App {
         System.out.println("Choose 1, 2, 3, 4\n");
     }
 
+    /**
+     * Collect user input.
+     */
     private String nextStep() {
-        //System.out.println("");
         return userOption.nextLine();
     }
 
+    private void printReturnMenu() {
+        System.out.println("Please, press any key to return to the menu :)");
+        nextStep();
+    }
 
+    /**
+     * Collect user input in order to create the task.
+     */
     public void collectDataToCreateTask() {
         String taskName;
         String dueDate;
@@ -90,7 +105,7 @@ public class App {
         System.out.println("Add a task");
         taskName = nextStep();
 
-        System.out.println("Add a date");
+        System.out.println("Add a date (yyyy-MM-dd)");
         dueDate = nextStep();
 
         System.out.println("Choose a project");
@@ -106,6 +121,9 @@ public class App {
         }
     }
 
+    /**
+     * Collect accurate due date from the user, which is later than current date.
+     */
     public LocalDate convertDate(String date) {
         LocalDate convertedDate;
         try {
