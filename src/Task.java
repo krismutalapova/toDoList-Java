@@ -1,22 +1,17 @@
-
+import java.util.Scanner;
 
 public class Task {
-    private int taskID;
+
     private String taskName;
     private String dueDate;
     private String project;
     private boolean isComplete;
 
-    public Task(int taskID, String taskName, String dueDate, String project, boolean isComplete) {
-        this.taskID = taskID;
+    public Task(String taskName, String dueDate, String project) {
+
         this.taskName = taskName;
         this.dueDate = dueDate;
         this.project = project;
-        this.isComplete = isComplete;
-    }
-
-    public int getTaskID() {
-        return taskID;
     }
 
     public String getTaskName() {
@@ -54,7 +49,6 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "taskID=" + taskID +
                 ", taskName='" + taskName + '\'' +
                 ", dueDate='" + dueDate + '\'' +
                 ", project='" + project + '\'' +

@@ -1,17 +1,39 @@
+import java.util.Scanner;
+
+
 public class App {
-    boolean exit = false;
+    private Scanner userOption = new Scanner(System.in);
+    private int option;
+    ToDoList toDoList = new ToDoList();
+    int opt;
 
     public static void main(String args[]) {
         App app = new App();
         app.runApp();
-        app.showMenu();
+
     }
 
-    public void runApp() {
+    public int runApp() {
         printWelcome();
         printOptions();
+        nextStep();
+
+        if ( opt == 1 ) {
+            toDoList.showMenu(1);
+        } else if ( opt == 2 ) {
+            this.collectDataToCreateTask();
+        } else if ( opt == 3 ) {
+            toDoList.showMenu(3);
+        } else if ( opt == 4 ) {
+            toDoList.showMenu(4);
+        } else if ( opt >= 5 ) {
+            System.out.println("Sorry invalid option, choose a number 1, 2, 3 or 4");
+        }
+        return 0;
+
 
     }
+
 
     private void printWelcome() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
@@ -28,7 +50,35 @@ public class App {
         System.out.println("(2) Add New Task");
         System.out.println("(3) Edit Task");
         System.out.println("(4) Save and Quit");
+        System.out.println("What do you want to do?");
     }
-}
 
+    private void nextStep() {
+        System.out.println("Choose 1, 2, 3, 4");
+        opt = userOption.nextInt();
+    }
+
+    public void collectDataToCreateTask() {
+        Scanner scanner = new Scanner(System.in);
+        String taskName;
+        String dueDate;
+        String project;
+
+        System.out.println("Add a task");
+        taskName = scanner.nextLine();
+
+        System.out.println("Add a date");
+        dueDate = scanner.nextLine();
+
+        System.out.println("Choose a project");
+        project = scanner.nextLine();
+
+        // DATE
+        // Project
+        Task task = new Task(taskName, dueDate, project);
+        toDoList.addTaskToList(task);
+
+    }
+
+}
 

@@ -1,58 +1,44 @@
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ToDoList {
-    private String Task;
     private ArrayList<Task> myTasks;
     private Scanner scan = new Scanner(System.in);
 
     public ToDoList() {
         myTasks = new ArrayList<>();
+
     }
 
     public void addTaskToList(Task task) {
         myTasks.add(task);
     }
 
-    public void createTask() {
-        System.out.println("Add task ID");
-        // int input
-        int taskID = scan.nextInt();
-        System.out.println("Add task ");
-        // String input
-        String taskName = scan.nextLine();
-        System.out.println("Add a due date for the task ");
-        // FIGURE OUT DATE FORMAT!!!
-        String dueDate = scan.nextLine();
-        System.out.println("Select a project");
-        //ADD PROJECTS
-        System.out.println("Add task ID");
-
-    }
-
     public void showMenu(int option) {
         if ( option >= 1 && option <= 4 ) {
             switch (option) {
                 case 1:
-                    System.out.println("Your task list:");
-                    // call method to show the list of added tasks
+                    System.out.println("Your task list: " + myTasks);
+
                     break;
                 case 2:
                     String taskName;
-                    System.out.println("Add a task");
-                    scan.nextLine();
-                    taskName = scan.nextLine();
+                    String dueDate;
+                    String project;
+                    // String[] y=  Task.data();
 
-                    int taskID;
-                    System.out.println("Add task ID");
-                    scan.nextInt();
-                    taskID = scan.nextInt();
+                    System.out.println("Add a task");
+                    taskName = scan.nextLine();
+                    System.out.println("Add a date");
+                    dueDate = scan.nextLine();
+                    System.out.println("Choose a project");
+                    project = scan.nextLine();
 
                     // DATE
 
                     // Project
 
-                    System.out.println("Your new task: " + taskName + taskID);
                     break;
                 case 3:
                     System.out.println("Edit");
@@ -62,7 +48,8 @@ public class ToDoList {
                     System.out.println("Save and Quit");
                     System.out.println("Thank you and good-bye!");
                     break;
-
+                default:
+                    System.out.println("Sorry invalid option, choose a number 1, 2, 3 or 4");
             }
         }
     }
