@@ -19,7 +19,7 @@ public class App {
         nextStep();
 
         if ( opt == 1 ) {
-            toDoList.showMenu(1);
+            this.showListOfTasks();
         } else if ( opt == 2 ) {
             this.collectDataToCreateTask();
         } else if ( opt == 3 ) {
@@ -58,6 +58,9 @@ public class App {
         opt = userOption.nextInt();
     }
 
+    public ToDoList showListOfTasks(){
+       return toDoList;
+    }
     public void collectDataToCreateTask() {
         Scanner scanner = new Scanner(System.in);
         String taskName;
@@ -73,12 +76,12 @@ public class App {
         System.out.println("Choose a project");
         project = scanner.nextLine();
 
-        // DATE
-        // Project
         Task task = new Task(taskName, dueDate, project);
         toDoList.addTaskToList(task);
+        System.out.println(task);
 
     }
+
 
 }
 
