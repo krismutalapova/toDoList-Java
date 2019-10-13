@@ -83,13 +83,13 @@ public class ToDoList {
         }
     }
     private void tasksMenu(){
-        System.out.println("**********************");
+        System.out.println("*************************");
         System.out.println("(1) Show all tasks");
         System.out.println("(2) Sort tasks by date");
         System.out.println("(3) Sort tasks by project");
         System.out.println("(4) Return to menu");
-        System.out.println("Choose 1, 2, 3, 4");
-        System.out.println("**********************\n");
+        System.out.println("Press 1, 2, 3 or 4");
+        System.out.println("*************************\n");
     }
 
     private String input() {

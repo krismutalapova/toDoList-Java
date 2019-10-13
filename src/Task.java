@@ -3,8 +3,7 @@ import java.time.LocalDate;
 public class Task {
 
     private String taskName;
-    private LocalDate dueDate;
-    // the format for local date is (yyyy-MM-dd)
+    private LocalDate dueDate; // the format for local date is (yyyy-MM-dd)
     private String project;
     private boolean isComplete;
 
