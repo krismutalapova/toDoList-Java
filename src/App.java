@@ -31,9 +31,7 @@ public class App {
 
             switch (nextStep()) {
                 case "1":
-                    toDoList.showListOfTasks();
-                    //switch case for 1 - show list, 2 - sorted by date, 3 - sorted by project, 4 - return tu menu.
-                    toDoList.sortListByDate();
+                    toDoList.listOfTasksMenu();
                     break;
                 case "2":
                     this.collectDataToCreateTask();
@@ -61,24 +59,21 @@ public class App {
     private void printWelcome() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("Welcome to ToDoList App");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~\n");
     }
 
     /**
      * Print out a menu to the user.
      */
-    private void printOptions() {
-        // add tasks after +
+    protected void printOptions() {
         System.out.println("You have " + toDoList.numberOfTasks(false)+ " to do and "
-                + toDoList.numberOfTasks(true)+ " tasks are done");
-        System.out.println("Pick an option");
-        // add options
+                + toDoList.numberOfTasks(true)+ " tasks are done\n");
+        System.out.println("Pick an option:");
         System.out.println("(1) Show Task List");
         System.out.println("(2) Add New Task");
         System.out.println("(3) Edit Task");
-        System.out.println("(4) Save and Quit");
-        System.out.println("What do you want to do?");
-        System.out.println("Choose 1, 2, 3, 4\n");
+        System.out.println("(4) Save and Quit\n");
+        System.out.println("Press 1, 2, 3 or 4\n");
     }
 
     /**
@@ -97,18 +92,15 @@ public class App {
      * Collect user input in order to create the task.
      */
     public void collectDataToCreateTask() {
-        String taskName;
-        String dueDate;
-        String project;
 
         System.out.println("Add a task");
-        taskName = nextStep();
+        String taskName = nextStep();
 
         System.out.println("Add a date (yyyy-MM-dd)");
-        dueDate = nextStep();
+        String dueDate = nextStep();
 
         System.out.println("Choose a project");
-        project = nextStep();
+        String project = nextStep();
 
         if ( convertDate(dueDate) == null ) {
             System.out.println("Invalid date, task was not created");
