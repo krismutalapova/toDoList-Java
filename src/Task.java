@@ -1,5 +1,8 @@
+
 import java.util.Scanner;
 import java.time.LocalDate;
+
+
 public class Task {
 
     private String taskName;
@@ -7,11 +10,33 @@ public class Task {
     private String project;
     private boolean isComplete;
 
+    /**
+     * used to create a task with the status set to not complete
+     * @param taskName The name of the task
+     * @param dueDate The date of the task
+     * @param project The project of the task
+     */
     public Task(String taskName, LocalDate dueDate, String project) {
 
         this.taskName = taskName;
         this.dueDate = dueDate;
         this.project = project;
+        isComplete = false;
+    }
+
+    /**
+     * used to create a task with the variable status
+     * @param taskName The name of the task
+     * @param dueDate The date of the task
+     * @param project The project of the task
+     * @param isComplete The status of the task
+     */
+    public Task(String taskName, LocalDate dueDate, String project, boolean isComplete) {
+
+        this.taskName = taskName;
+        this.dueDate = dueDate;
+        this.project = project;
+        this.isComplete = isComplete;
     }
 
     public String getTaskName() {
@@ -34,7 +59,7 @@ public class Task {
         return project;
     }
 
-    public void setProject(String project) {
+    public void setProject() {
         this.project = project;
     }
 
@@ -45,13 +70,15 @@ public class Task {
     public void setComplete(boolean complete) {
         isComplete = complete;
     }
-    public String setStatus(){
 
-        if (isComplete){
+    public String setStatus() {
+
+        if ( isComplete ) {
             return "DONE";
         }
         return "PENDING";
     }
+
     @Override
     public String toString() {
         return '\'' + taskName + '\'' +
@@ -59,7 +86,12 @@ public class Task {
                 ", the project is '" + project + '\'' +
                 ", status is " + setStatus();
     }
+
 }
+//
+//
+//
+
 
 
 

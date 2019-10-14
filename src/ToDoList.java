@@ -1,15 +1,9 @@
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Scanner;
 
 public class ToDoList {
-    private ArrayList<Task> myTasks;
-    private Scanner userInput;
+    private ArrayList<Task> myTasks = new ArrayList<>();
 
-    public ToDoList() {
-        myTasks = new ArrayList<>();
-        userInput = new Scanner(System.in);
-    }
 
     public void addTaskToList(Task task) {
         myTasks.add(task);
@@ -32,7 +26,7 @@ public class ToDoList {
     public void showListOfTasks() {
         myTasks.stream()
                 .map(task -> task.toString())
-                .forEach(string -> System.out.println(string));
+                .forEach(System.out::println);
     }
 
     /**
@@ -50,17 +44,19 @@ public class ToDoList {
      */
     public void sortListByProject(){
         myTasks.stream()
-                .sorted(Comparator.comparing(task -> task.getProject()))
-                .map(task -> task.toString())
-                .forEach(string -> System.out.println(string));
+                .sorted(Comparator.comparing(Task::getProject))
+                .map(Task::toString)
+                .forEach(System.out::println);
+
     }
 
-    public void listOfTasksMenu() {
+    protected void listOfTasksMenu() {
         boolean backToMenu = false;
+        App app = new App();
         while (!backToMenu) {
 
             tasksMenu();
-            switch (input()){
+            switch (app.nextStep()){
                 case "1":
                     showListOfTasks();
                     break;
@@ -72,14 +68,14 @@ public class ToDoList {
                     break;
                 case "4":
                     backToMenu = true;
-
+                    app.printOptions();
                     break;
                 default:
                     System.out.println("Sorry invalid option :( ");
                     tasksMenu();
                     break;
             }
-            returnToTaskMenu();
+            app.printReturnMenu();
         }
     }
     private void tasksMenu(){
@@ -91,13 +87,11 @@ public class ToDoList {
         System.out.println("Press 1, 2, 3 or 4");
         System.out.println("*************************\n");
     }
-
-    private String input() {
-        return userInput.nextLine();
+    public ArrayList<Task> getMyTasks (){
+        return myTasks;
     }
 
-    private void returnToTaskMenu() {
-        System.out.println("Please, press any key to return to the menu :)");
-        input();
+    public void savedTasks (ArrayList<Task> tasks) {
+       myTasks.addAll(tasks);
     }
 }
