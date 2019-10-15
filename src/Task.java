@@ -12,9 +12,10 @@ public class Task {
 
     /**
      * used to create a task with the status set to not complete
+     *
      * @param taskName The name of the task
-     * @param dueDate The date of the task
-     * @param project The project of the task
+     * @param dueDate  The date of the task
+     * @param project  The project of the task
      */
     public Task(String taskName, LocalDate dueDate, String project) {
 
@@ -26,9 +27,10 @@ public class Task {
 
     /**
      * used to create a task with the variable status
-     * @param taskName The name of the task
-     * @param dueDate The date of the task
-     * @param project The project of the task
+     *
+     * @param taskName   The name of the task
+     * @param dueDate    The date of the task
+     * @param project    The project of the task
      * @param isComplete The status of the task
      */
     public Task(String taskName, LocalDate dueDate, String project, boolean isComplete) {

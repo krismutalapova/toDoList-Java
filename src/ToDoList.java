@@ -72,7 +72,6 @@ public class ToDoList {
                     break;
                 default:
                     System.out.println("Sorry invalid option :( ");
-                    tasksMenu();
                     break;
             }
             app.printReturnMenu();
@@ -93,5 +92,9 @@ public class ToDoList {
 
     public void savedTasks (ArrayList<Task> tasks) {
        myTasks.addAll(tasks);
+    }
+
+    public void printTasksToEdit () {
+
     }
 }

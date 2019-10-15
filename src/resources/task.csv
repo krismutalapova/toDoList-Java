@@ -1,2 +1,4 @@
-milk,2019-12-12,(2) SHOPPING,true
-bread,2019-10-15,(2) SHOPPING,false
+milk,2019-12-12,SHOPPING,true
+bread,2019-10-15,SHOPPING,false
+laundry,2019-10-20,ERRANDS,false
+call mom,2019-12-12,FAMILY,false

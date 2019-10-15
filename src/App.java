@@ -104,10 +104,11 @@ public class App {
         dueDate = nextStep();
 
         System.out.println("Choose a project");
-        String[] projects = {"(1) ERRANDS", "(2) SHOPPING", "(3) APPOINTMENTS", "(4) OTHER"};
+        String[] projects = {"ERRANDS", "SHOPPING", "APPOINTMENTS", "OTHER"};
             for (int i = 0; i<projects.length; i++){
-            System.out.println(projects[i]);
+            System.out.println("(" + (i+1) + ") " + projects[i]);
             }
+        System.out.println("Or enter another name for your project");
         project = nextStep();
 
         switch (project) {
@@ -124,8 +125,7 @@ public class App {
                 project = projects[3];
                 break;
             default:
-                System.out.println("Your task was automatically moved to OTHER");
-                project = projects[3];
+                project = project.toUpperCase();
                 break;
         }
 
@@ -174,7 +174,10 @@ public class App {
                     break;
                 case "4":
                     backToMenu = true;
-
+                    break;
+                case "5":
+                    break;
+                case "6":
                     break;
                 default:
                     System.out.println("Sorry invalid option :( ");
@@ -187,11 +190,11 @@ public class App {
 
     private void modifyTasksMenu() {
         System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^");
-        System.out.println("(1) Edit task");
-        System.out.println("(2) Mark task as done");
-        System.out.println("(3) Remove task");
-        System.out.println("(4) Return to menu");
-        System.out.println("Press 1, 2, 3 or 4");
+        String[] modifications = {"Edit task", "Edit the date", "Edit the project",
+                "Mark task as done", "Remove task", "Return to menu"};
+        for (int i = 0; i<modifications.length; i++){
+            System.out.println("(" + (i+1) + ") " + modifications[i]);
+        }
         System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^\n");
     }
 

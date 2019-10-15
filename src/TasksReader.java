@@ -42,6 +42,11 @@ public class TasksReader {
                 task.isComplete();
     }
 
+    /**
+     *
+     * @param data
+     * @return
+     */
     public String escapeSpecialCharacters(String data) {
         String escapedData = data.replaceAll("\\R", " ");
         if ( data.contains(",") || data.contains("\"") || data.contains("'") ) {
