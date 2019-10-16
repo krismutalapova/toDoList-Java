@@ -61,7 +61,7 @@ public class Task {
         return project;
     }
 
-    public void setProject() {
+    public void setProject(String project) {
         this.project = project;
     }
 
@@ -83,10 +83,11 @@ public class Task {
 
     @Override
     public String toString() {
-        return '\'' + taskName + '\'' +
-                ", the due date is '" + dueDate + '\'' +
-                ", the project is '" + project + '\'' +
-                ", status is " + setStatus();
+        return Colours.ANSI_BLUE.toString() + '\'' + taskName + '\'' + Colours.ANSI_RESET.toString() +
+                ", the due date is " + Colours.ANSI_BLUE.toString()  + '\'' + dueDate + '\'' +
+                Colours.ANSI_RESET.toString() + ", the project is " + Colours.ANSI_BLUE.toString()  + '\'' +
+                project + '\'' + Colours.ANSI_RESET.toString() + ", status is " + Colours.ANSI_BLUE.toString()  +
+                setStatus() + Colours.ANSI_RESET.toString();
     }
 
 }

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ef35e28-3571-4905-8f30-0fbc998f95b8" name="Default Changelist" comment="">
+    <list default="true" id="8ef35e28-3571-4905-8f30-0fbc998f95b8" name="Default Changelist" comment="Added a TaskReader to save Tasks into a csv file and various enhancements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoList.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoList.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoTest/TaskTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoTest/TaskTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TasksReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TasksReader.java" afterDir="false" />
@@ -21,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -45,6 +44,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -115,7 +117,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
