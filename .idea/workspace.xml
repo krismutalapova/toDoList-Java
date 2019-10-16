@@ -4,10 +4,9 @@
     <list default="true" id="8ef35e28-3571-4905-8f30-0fbc998f95b8" name="Default Changelist" comment="Added a TaskReader to save Tasks into a csv file and various enhancements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Colours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Colours.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TasksReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TasksReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/task.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/task.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

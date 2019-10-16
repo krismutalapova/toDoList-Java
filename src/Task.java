@@ -1,5 +1,3 @@
-
-import java.util.Scanner;
 import java.time.LocalDate;
 
 
@@ -34,66 +32,101 @@ public class Task {
      * @param isComplete The status of the task
      */
     public Task(String taskName, LocalDate dueDate, String project, boolean isComplete) {
-
         this.taskName = taskName;
         this.dueDate = dueDate;
         this.project = project;
         this.isComplete = isComplete;
     }
 
+    /**
+     * Get the name of the task
+     * @return String task name
+     */
     public String getTaskName() {
         return taskName;
     }
 
+    /**
+     * Set the name of the task
+     * @param taskName String
+     */
     public void setTaskName(String taskName) {
         this.taskName = taskName;
     }
 
+    /**
+     * Get the due date of the task
+     * @return Local date
+     */
     public LocalDate getDueDate() {
         return dueDate;
     }
 
+    /**
+     * Set the due date for the task
+     * @param dueDate
+     */
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
+    /**
+     * Get the project the task is in
+     * @return String project
+     */
     public String getProject() {
         return project;
     }
 
+    /**
+     * Set the project for the task
+     * @param project
+     */
     public void setProject(String project) {
         this.project = project;
     }
 
+    /**
+     * Get the status of the task
+     * @return
+     */
     public boolean isComplete() {
         return isComplete;
     }
 
+    /**
+     * Set the status as complete
+     * @param complete
+     */
     public void setComplete(boolean complete) {
         isComplete = complete;
     }
 
+    /**
+     * Turn status into Pending if isComplete is false, Done otherwise
+     * @return
+     */
     public String setStatus() {
 
         if ( isComplete ) {
-            return "DONE";
+            return Colours.ANSI_GREEN.toString() + "DONE" + Colours.ANSI_RESET.toString();
         }
-        return "PENDING";
+        return Colours.ANSI_RED.toString() + "PENDING" + Colours.ANSI_RESET.toString();
     }
 
+    /**
+     * Turn task into string
+     * @return
+     */
     @Override
     public String toString() {
-        return Colours.ANSI_BLUE.toString() + '\'' + taskName + '\'' + Colours.ANSI_RESET.toString() +
-                ", the due date is " + Colours.ANSI_BLUE.toString()  + '\'' + dueDate + '\'' +
-                Colours.ANSI_RESET.toString() + ", the project is " + Colours.ANSI_BLUE.toString()  + '\'' +
-                project + '\'' + Colours.ANSI_RESET.toString() + ", status is " + Colours.ANSI_BLUE.toString()  +
-                setStatus() + Colours.ANSI_RESET.toString();
+        return "Task: " + Colours.ANSI_BLUE.toString() + '\'' + taskName + '\'' + Colours.ANSI_RESET.toString() +
+                ", due date: " + Colours.ANSI_BLUE.toString() + '\'' + dueDate + '\'' +
+                Colours.ANSI_RESET.toString() + ", project: " + Colours.ANSI_BLUE.toString() + '\'' +
+                project + '\'' + Colours.ANSI_RESET.toString() + ", status: " + setStatus();
     }
-
 }
-//
-//
-//
+
 
 
 
