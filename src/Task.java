@@ -106,7 +106,7 @@ public class Task {
      * Turn status into Pending if isComplete is false, Done otherwise
      * @return
      */
-    public String setStatus() {
+    public String statusToString() {
 
         if ( isComplete ) {
             return Colours.ANSI_GREEN.toString() + "DONE" + Colours.ANSI_RESET.toString();
@@ -123,7 +123,7 @@ public class Task {
         return "Task: " + Colours.ANSI_BLUE.toString() + '\'' + taskName + '\'' + Colours.ANSI_RESET.toString() +
                 ", due date: " + Colours.ANSI_BLUE.toString() + '\'' + dueDate + '\'' +
                 Colours.ANSI_RESET.toString() + ", project: " + Colours.ANSI_BLUE.toString() + '\'' +
-                project + '\'' + Colours.ANSI_RESET.toString() + ", status: " + setStatus();
+                project + '\'' + Colours.ANSI_RESET.toString() + ", status: " + statusToString();
     }
 }
 

@@ -245,7 +245,7 @@ public class App {
         System.out.println(Colours.ANSI_BLUE.toString() + "^^^^^^^^^^^^^^^^^^^^^^^^^" +
                 Colours.ANSI_RESET.toString());
         String[] modifications = {"Edit task name", "Edit due date", "Change the project",
-                "Mark task as done", "Remove task", "Return to menu"};
+                "Mark task as done", "Remove task", "Cancel"};
         for (int i = 0; i < modifications.length; i++) {
             System.out.println("(" + (i + 1) + ") " + modifications[i]);
         }
@@ -269,7 +269,6 @@ public class App {
 
     /**
      * Validate if due date is later than current date, when user creates or edits the task
-     *
      * @param date for the project
      * @return true if the date is valid, false otherwise
      */
