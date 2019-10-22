@@ -42,7 +42,7 @@ public class ToDoList {
     /**
      * Sort the list of tasks by the project
      */
-    public void sortListByProject() {
+    private void sortListByProject() {
         myTasks.stream()
                 .sorted(Comparator.comparing(Task::getProject))
                 .map(Task::toString)
@@ -52,26 +52,31 @@ public class ToDoList {
     /**
      * Choose an option from a menu for task list: 1 - unsorted, 2 - sorted by date 3 - sorted by project, 4 - exit
      */
-    protected void listOfTasksMenu() {
+    void listOfTasksMenu() {
         App app = new App();
-        while (true) {
-            tasksMenu();
-            switch (app.nextStep()) {
-                case "1":
-                    showListOfTasks();
-                    return;
-                case "2":
-                    sortListByDate();
-                    return;
-                case "3":
-                    sortListByProject();
-                    return;
-                case "4":
-                    return;
-                default:
-                    System.out.println(Colours.ANSI_RED.toString() + "Sorry invalid option :( " +
-                            Colours.ANSI_RESET.toString());
-                    break;
+        if ( sizeOfTheList() == 0 ) {
+            System.out.println(Colours.ANSI_RED.toString()
+                    + "Your to-do list is currently empty" + Colours.ANSI_RESET.toString());
+        } else {
+            while (true) {
+                tasksMenu();
+                switch (app.nextStep()) {
+                    case "1":
+                        showListOfTasks();
+                        return;
+                    case "2":
+                        sortListByDate();
+                        return;
+                    case "3":
+                        sortListByProject();
+                        return;
+                    case "4":
+                        return;
+                    default:
+                        System.out.println(Colours.ANSI_RED.toString() + "Sorry invalid option :( " +
+                                Colours.ANSI_RESET.toString());
+                        break;
+                }
             }
         }
     }
@@ -92,14 +97,17 @@ public class ToDoList {
 
     /**
      * Show the unsorted list of tasks
+     *
      * @return an ArrayList of tasks
      */
     public ArrayList<Task> getMyTasks() {
         return myTasks;
     }
 
+
     /**
      * Save the tasks in a to-do-list
+     *
      * @param tasks
      */
     public void savedTasks(ArrayList<Task> tasks) {
@@ -117,6 +125,7 @@ public class ToDoList {
 
     /**
      * Measure the size of the to-do-list
+     *
      * @return int the size of the to-do-list
      */
     public int sizeOfTheList() {
@@ -125,6 +134,7 @@ public class ToDoList {
 
     /**
      * Display a task chosen by the user for future manipulations
+     *
      * @param index of the chosen task
      * @return String task
      */
@@ -136,7 +146,7 @@ public class ToDoList {
      * Change the name of the chosen task
      *
      * @param index of the chosen task
-     * @param name of the task
+     * @param name  of the task
      */
     public void changeTaskName(int index, String name) {
         myTasks.get(index).setTaskName(name);
@@ -144,8 +154,9 @@ public class ToDoList {
 
     /**
      * Change the date of the chosen task
+     *
      * @param index of the chosen task
-     * @param date by which the task needs to be completed
+     * @param date  by which the task needs to be completed
      */
     public void changeTaskDate(int index, LocalDate date) {
         myTasks.get(index).setDueDate(date);
@@ -153,7 +164,8 @@ public class ToDoList {
 
     /**
      * Change the project of the chosen task
-     * @param index of the chosen task
+     *
+     * @param index   of the chosen task
      * @param project the task is in
      */
     public void changeProject(int index, String project) {
@@ -162,7 +174,8 @@ public class ToDoList {
 
     /**
      * Change the status of the task
-     * @param index of the chosen task
+     *
+     * @param index      of the chosen task
      * @param isComplete set status as done
      */
     public void changeStatus(int index, boolean isComplete) {
@@ -171,6 +184,7 @@ public class ToDoList {
 
     /**
      * Remove the task from the list
+     *
      * @param index of the chosen task
      */
     public void removeTask(int index) {

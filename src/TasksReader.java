@@ -10,8 +10,6 @@ public class TasksReader {
 
     private static final String FILE_PATH = "src/resources/";
     private static final String FILE_NAME = "task.csv";
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
 
     /**
      * Write a list of tasks into a file
@@ -27,7 +25,7 @@ public class TasksReader {
                     .map(this::convertToCSV)
                     .forEach(pw::println);
         } catch (IOException e) {
-            System.out.println(ANSI_RED + "Oops, något gick fel" + ANSI_RESET);
+            System.out.println(Colours.ANSI_RED.toString() + "Oops, något gick fel" + Colours.ANSI_RESET.toString());
         }
     }
 
@@ -77,11 +75,13 @@ public class TasksReader {
 
                             return new Task(taskName, dueDate, project, isComplete);
                         } catch (Exception e) {
-                            System.out.println(ANSI_RED + "Task csvLine has a malformed integer" + ANSI_RESET);
+                            System.out.println(Colours.ANSI_RED.toString() + "Task csvLine has a malformed integer"
+                                    + Colours.ANSI_RESET.toString());
                             return null;
                         }
                     } else {
-                        System.out.println(ANSI_RED + "Task csvLine has the wrong number of fields" + ANSI_RESET);
+                        System.out.println(Colours.ANSI_RED.toString() + "Task csvLine has the wrong number of fields"
+                                + Colours.ANSI_RESET.toString());
                         return null;
                     }
                 };
@@ -94,7 +94,8 @@ public class TasksReader {
                     .filter(task -> task != null)
                     .collect(Collectors.toCollection(ArrayList::new));
         } catch (IOException e) {
-            System.out.println(ANSI_RED + "Unable to open " + FILE_PATH + FILE_NAME + ANSI_RESET);
+            System.out.println(Colours.ANSI_RED.toString() + "Unable to open " + FILE_PATH + FILE_NAME
+                    + Colours.ANSI_RESET.toString());
             tasks = new ArrayList<>();
         }
         return tasks;
