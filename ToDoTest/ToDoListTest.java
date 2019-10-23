@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ToDoListTest {
@@ -22,44 +20,25 @@ class ToDoListTest {
     }
 
     @Test
-    void numberOfTasksTrue() {
+    void numberOfCompleteTasksTrue() {
         ToDoList toDoList = new ToDoList();
-        ArrayList<Task> myTasks = new ArrayList<>();
         Task task = new Task(name, date, project);
         Task task2 = new Task(name2, date2, project2);
-        myTasks.add(task);
-        myTasks.add(task2);
+        toDoList.addTaskToList(task);
+        toDoList.addTaskToList(task2);
 
-        assertEquals(0, toDoList.numberOfTasks(true));
+        assertEquals(2, toDoList.numberOfTasks(false));
     }
 
     @Test
-    void numberOfTasksFalse() {
+    void numberOfTasksCompleteFalse() {
         ToDoList toDoList = new ToDoList();
-        ArrayList<Task> myTasks = new ArrayList<>();
         Task task = new Task(name, date, project);
         Task task2 = new Task(name2, date2, project2);
-        myTasks.add(task);
-        myTasks.add(task2);
+        toDoList.addTaskToList(task);
+        toDoList.addTaskToList(task2);
         task.setComplete(true);
-        assertNotEquals(1, toDoList.numberOfTasks(true));
-    }
-//    @Test
-//    void sortListByDate() {
-//        ToDoList toDoList = new ToDoList();
-//        ArrayList<String> expect = new ArrayList<>();
-//        String date = "2020-12-12";
-//        String date2 = "2021-12-13";
-//        String date3 = "2022-10-11";
-//        expect.add(date);
-//        expect.add(date2);
-//        expect.add(date3);
-//        assertEquals(expect, toDoList.sortListByDate(expect));
-//
-//    }
-
-    @Test
-    void sortListByProject() {
+        assertNotEquals(2, toDoList.numberOfTasks(false));
     }
 
 
@@ -71,7 +50,12 @@ class ToDoListTest {
     }
 
     @Test
-    void savedTasks() {
+    void saveTasksToListTrue() {
+        Task task = new Task(name, date, project);
+        Task task2 = new Task(name2, date2, project2);
+        myTasks.add(task);
+        myTasks.add(task2);
+        assertTrue(myTasks.size() == 2);
     }
 
 
@@ -94,7 +78,6 @@ class ToDoListTest {
     }
     @Test
     void getTheTaskFromTheListTrue() {
-        ToDoList toDoList = new ToDoList();
         Task task = new Task(name, date, project);
         Task task2 = new Task(name2, date2, project2);
         myTasks.add(task);
@@ -104,7 +87,6 @@ class ToDoListTest {
 
     @Test
     void getTheTaskFromTheListFalse() {
-        ToDoList toDoList = new ToDoList();
         Task task = new Task(name, date, project);
         Task task2 = new Task(name2, date2, project2);
         myTasks.add(task);
@@ -113,22 +95,42 @@ class ToDoListTest {
     }
 
     @Test
-    void changeTaskName() {
+    void changeTaskNameTrue() {
+        Task task = new Task(name, date, project);
+        task.setTaskName(name2);
+        assertEquals(name2, task.getTaskName());
     }
 
     @Test
-    void changeTaskDate() {
+    void changeTaskDateTrue() {
+        Task task = new Task(name, date, project);
+        task.setDueDate(date2);
+        assertEquals(date2, task.getDueDate());
     }
 
     @Test
-    void changeProject() {
+    void changeProjectTrue() {
+        Task task = new Task(name, date, project);
+        task.setProject(project2);
+        assertEquals(project2, task.getProject());
     }
 
     @Test
-    void changeStatus() {
+    void changeStatusTrue() {
+        Task task = new Task(name, date, project, false);
+        task.setComplete(true);
+        assertEquals(true, task.isComplete());
     }
 
+
     @Test
-    void removeTask() {
+    void removeTaskTrue() {
+        Task task = new Task(name, date, project);
+        Task task2 = new Task(name2, date2, project2);
+        myTasks.add(task);
+        myTasks.add(task2);
+        myTasks.remove(task);
+        assertEquals(task2, myTasks.get(0));
+        assertTrue(myTasks.size() == 1);
     }
 }
