@@ -22,6 +22,16 @@ public class App {
     }
 
     /**
+     * Print out a Welcome message to the user.
+     */
+    private void printWelcome() {
+
+        System.out.println(Colours.ANSI_BLUE.toString() + "~~~~~~~~~~~~~~~~~~~~~~~" + Colours.ANSI_RESET.toString());
+        System.out.println(Colours.ANSI_BLUE.toString() + "Welcome to ToDoList App" + Colours.ANSI_RESET.toString());
+        System.out.println(Colours.ANSI_BLUE.toString() + "~~~~~~~~~~~~~~~~~~~~~~~~\n" + Colours.ANSI_RESET.toString());
+    }
+
+    /**
      * Run the application and ask for user input for further action
      */
     private void runApp() {
@@ -51,16 +61,6 @@ public class App {
             }
             printReturnMenu();
         }
-    }
-
-    /**
-     * Print out a Welcome message to the user.
-     */
-    private void printWelcome() {
-
-        System.out.println(Colours.ANSI_BLUE.toString() + "~~~~~~~~~~~~~~~~~~~~~~~" + Colours.ANSI_RESET.toString());
-        System.out.println(Colours.ANSI_BLUE.toString() + "Welcome to ToDoList App" + Colours.ANSI_RESET.toString());
-        System.out.println(Colours.ANSI_BLUE.toString() + "~~~~~~~~~~~~~~~~~~~~~~~~\n" + Colours.ANSI_RESET.toString());
     }
 
     /**
@@ -125,6 +125,7 @@ public class App {
 
     /**
      * Print the list of projects for user to choose from while creating the task or editing it
+     *
      * @return the name of the project chosen for the task
      */
 
@@ -134,7 +135,8 @@ public class App {
         for (int i = 0; i < projects.length; i++) {
             System.out.println("(" + (i + 1) + ") " + projects[i]);
         }
-        System.out.println("(5) Or enter another name for your project");
+        System.out.println(Colours.ANSI_BLUE.toString() + "Or enter another name for your project"
+                + Colours.ANSI_RESET.toString());
         project = nextStep();
 
         switch (project) {
@@ -194,7 +196,7 @@ public class App {
                     System.out.println("Enter a new due date " + Colours.ANSI_RED.toString()
                             + "yyyy-MM-dd" + Colours.ANSI_RESET.toString());
                     String validDate = nextStep();
-                    if (!isValidDate(validDate)) {
+                    if ( !isValidDate(validDate) ) {
                         System.out.println(Colours.ANSI_RED.toString() + "Invalid date, task was not created" +
                                 Colours.ANSI_RESET.toString());
                     } else {
@@ -220,8 +222,7 @@ public class App {
                     backToMenu = true;
                     break;
                 case "5":
-                    System.out.println(Colours.ANSI_RED.toString() + "Your task " + Colours.ANSI_RESET.toString()
-                            + toDoList.getTheTaskFromTheList(index) + Colours.ANSI_RED.toString()
+                    System.out.println(toDoList.getTheTaskFromTheList(index) + Colours.ANSI_RED.toString()
                             + " has been removed" + Colours.ANSI_RESET.toString());
                     toDoList.removeTask(index);
                     backToMenu = true;
@@ -256,7 +257,7 @@ public class App {
     /**
      * Collect due date from the user and parse it to String.
      */
-    public static LocalDate convertDate(String date) {
+    static LocalDate convertDate(String date) {
         LocalDate convertedDate;
         try {
             convertedDate = LocalDate.parse(date);
@@ -269,10 +270,11 @@ public class App {
 
     /**
      * Validate if due date is later than current date, when user creates or edits the task
+     *
      * @param date for the project
      * @return true if the date is valid, false otherwise
      */
-    private boolean isValidDate(String date) {
+    public boolean isValidDate(String date) {
         LocalDate convertedDate;
         try {
             convertedDate = LocalDate.parse(date);

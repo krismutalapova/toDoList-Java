@@ -3,17 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="8ef35e28-3571-4905-8f30-0fbc998f95b8" name="Default Changelist" comment="Added a TaskReader to save Tasks into a csv file and various enhancements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoTest/TaskTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoTest/ToDoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDoTest/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoTest/AppTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/task.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/task.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="202" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -70,51 +70,51 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TaskTest">
-    <configuration name="TaskTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AppTest.convertIndexToIntFalse">
+    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ToDoList" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TaskTest" />
+      <option name="MAIN_CLASS_NAME" value="AppTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskTest.setCompleteFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppTest.convertDateFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ToDoList" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TaskTest" />
-      <option name="METHOD_NAME" value="setCompleteFalse" />
+      <option name="MAIN_CLASS_NAME" value="AppTest" />
+      <option name="METHOD_NAME" value="convertDateFalse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskTest.setStatusTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppTest.convertDateTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ToDoList" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TaskTest" />
-      <option name="METHOD_NAME" value="setStatusTrue" />
+      <option name="MAIN_CLASS_NAME" value="AppTest" />
+      <option name="METHOD_NAME" value="convertDateTrue" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskTest.statusToStringFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppTest.convertIndexToIntFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ToDoList" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TaskTest" />
-      <option name="METHOD_NAME" value="statusToStringFalse" />
+      <option name="MAIN_CLASS_NAME" value="AppTest" />
+      <option name="METHOD_NAME" value="convertIndexToIntFalse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskTest.statusToStringTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppTest.convertIndexToIntTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ToDoList" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TaskTest" />
-      <option name="METHOD_NAME" value="statusToStringTrue" />
+      <option name="MAIN_CLASS_NAME" value="AppTest" />
+      <option name="METHOD_NAME" value="convertIndexToIntTrue" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -122,11 +122,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TaskTest" />
-        <item itemvalue="JUnit.TaskTest.statusToStringTrue" />
-        <item itemvalue="JUnit.TaskTest.statusToStringFalse" />
-        <item itemvalue="JUnit.TaskTest.setStatusTrue" />
-        <item itemvalue="JUnit.TaskTest.setCompleteFalse" />
+        <item itemvalue="JUnit.AppTest.convertIndexToIntFalse" />
+        <item itemvalue="JUnit.AppTest.convertIndexToIntTrue" />
+        <item itemvalue="JUnit.AppTest" />
+        <item itemvalue="JUnit.AppTest.convertDateFalse" />
+        <item itemvalue="JUnit.AppTest.convertDateTrue" />
       </list>
     </recent_temporary>
   </component>
@@ -167,5 +167,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added a TaskReader to save Tasks into a csv file and various enhancements" />
     <option name="LAST_COMMIT_MESSAGE" value="Added a TaskReader to save Tasks into a csv file and various enhancements" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ToDoList$TaskTest.ic" NAME="TaskTest Coverage Results" MODIFIED="1571900268915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ToDoList$All_in_ToDoList.ic" NAME="All in ToDoList Coverage Results" MODIFIED="1571900356264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
