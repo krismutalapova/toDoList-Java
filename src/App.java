@@ -291,7 +291,7 @@ public class App {
     /**
      * Collect accurate user input, that can be turned into int, otherwise return -1
      */
-    private int convertIndexToInt(String index) {
+    public int convertIndexToInt(String index) {
         int convertedIndex;
         try {
             convertedIndex = Integer.parseInt(index) - 1;
