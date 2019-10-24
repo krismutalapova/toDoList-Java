@@ -33,3 +33,11 @@ Press 1, 2, 3 or 4
 ```
 
 ### Enjoy the app!
+
+### User Manual
+
+[You will find a user manual here. ](User_manual.md)
+
+### Class Diagram
+
+![If you want to see the class diagram click here.](Class_diagram.png?raw=true "Class Diagram")
