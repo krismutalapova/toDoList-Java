@@ -7,11 +7,13 @@ public class App {
     private Scanner userOption;
     private ToDoList toDoList;
     private TasksReader tasksReader;
+    private View view;
 
     public App() {
         userOption = new Scanner(System.in);
         toDoList = new ToDoList();
         tasksReader = new TasksReader();
+        view = new View();
 
     }
 
@@ -22,24 +24,14 @@ public class App {
     }
 
     /**
-     * Print out a Welcome message to the user.
-     */
-    private void printWelcome() {
-
-        System.out.println(Colours.ANSI_BLUE.toString() + "~~~~~~~~~~~~~~~~~~~~~~~" + Colours.ANSI_RESET.toString());
-        System.out.println(Colours.ANSI_BLUE.toString() + "Welcome to ToDoList App" + Colours.ANSI_RESET.toString());
-        System.out.println(Colours.ANSI_BLUE.toString() + "~~~~~~~~~~~~~~~~~~~~~~~~\n" + Colours.ANSI_RESET.toString());
-    }
-
-    /**
      * Run the application and ask for user input for further action
      */
     private void runApp() {
-        printWelcome();
+        view.printWelcome();
         toDoList.savedTasks(tasksReader.getTasks());
 
         while (true) {
-            printOptions();
+            view.printOptions();
 
             switch (nextStep()) {
                 case "1":
@@ -55,29 +47,14 @@ public class App {
                     tasksReader.writeIntoFile(toDoList.getMyTasks()); // save the tasks into file
                     return;
                 default:
-                    System.out.println(Colours.ANSI_RED + "Sorry invalid option :( " + Colours.ANSI_RESET.toString());
+                    view.invalidOption();
                     // display an error message if user input != 1, 2, 3 or 4
                     break;
             }
-            printReturnMenu();
+            view.printReturnMenu();
         }
     }
 
-    /**
-     * Print out the main menu to the user.
-     */
-    protected void printOptions() {
-        System.out.println("You have " + Colours.ANSI_RED.toString() + toDoList.numberOfTasks(false) +
-                Colours.ANSI_RESET.toString() + " tasks to do and " + Colours.ANSI_GREEN.toString() +
-                toDoList.numberOfTasks(true) + Colours.ANSI_RESET.toString() + " tasks are done\n");
-        System.out.println(Colours.ANSI_BLUE.toString() + "Pick an option:" + Colours.ANSI_RESET.toString());
-
-        String[] actions = {"(1) Show Task List", "(2) Add New Task", "(3) Edit Task", "(4) Save changes and Quit"};
-        for (int i = 0; i < actions.length; i++) {
-            System.out.println(actions[i]);
-        }
-        System.out.println(Colours.ANSI_BLUE.toString() + "\nPress 1, 2, 3 or 4\n" + Colours.ANSI_RESET.toString());
-    }
 
     /**
      * Collect user input.
@@ -86,14 +63,6 @@ public class App {
         return userOption.nextLine();
     }
 
-    /**
-     * Print a message asking for any input to return to the main menu
-     */
-    protected void printReturnMenu() {
-        System.out.println(Colours.ANSI_BLUE.toString() + "Please, press any key to return to the menu :)"
-                + Colours.ANSI_RESET.toString());
-        nextStep();
-    }
 
     /**
      * Collect user input in order to create the task.
@@ -103,19 +72,17 @@ public class App {
         String dueDate;
         String project;
 
-        System.out.println("Add a task");
+        view.chooseTask();
         taskName = nextStep();
 
-        System.out.println("Add a date " + Colours.ANSI_RED.toString()
-                + "yyyy-MM-dd" + Colours.ANSI_RESET.toString());
+        view.chooseDate();
         dueDate = nextStep();
 
-        System.out.println("Choose a project");
+        view.chooseProject();
         project = chooseProject();
 
         if ( !isValidDate(dueDate) ) {
-            System.out.println(Colours.ANSI_RED.toString() + "Invalid date, task was not created" +
-                    Colours.ANSI_RESET.toString());
+            view.invalidDate();
         } else {
             Task task = new Task(taskName, convertDate(dueDate), project);
             toDoList.addTaskToList(task);
@@ -128,15 +95,13 @@ public class App {
      *
      * @return the name of the project chosen for the task
      */
-
     public String chooseProject() {
         String project;
         String[] projects = {"ERRANDS", "SHOPPING", "APPOINTMENTS", "OTHER"};
         for (int i = 0; i < projects.length; i++) {
             System.out.println("(" + (i + 1) + ") " + projects[i]);
         }
-        System.out.println(Colours.ANSI_BLUE.toString() + "Or enter another name for your project"
-                + Colours.ANSI_RESET.toString());
+        view.differentProject();
         project = nextStep();
 
         switch (project) {
@@ -167,11 +132,10 @@ public class App {
         boolean wrongIndex = false; //validate the user input (is number or not)
         int index = 0;
         while (!wrongIndex) {
-            System.out.println(Colours.ANSI_BLUE.toString() + "Choose the number of the task you want to edit or remove" +
-                    Colours.ANSI_RESET.toString());
+            view.numberOfTasks();
             index = convertIndexToInt(nextStep());
             if ( index == -1 ) {
-                System.out.println(Colours.ANSI_RED.toString() + "Sorry, invalid input" + Colours.ANSI_RESET.toString());
+                view.invalidInput();
             } else {
                 wrongIndex = true;
             }
@@ -186,38 +150,30 @@ public class App {
 
             switch (nextStep()) {
                 case "1":
-                    System.out.println("Change the task name");
+                    view.changeTask();
                     toDoList.changeTaskName(index, nextStep());
-                    System.out.println(Colours.ANSI_GREEN.toString() + "Task name has been changed"
-                            + Colours.ANSI_RESET.toString());
+                    view.changeSuccessful();
                     backToMenu = true;
                     break;
                 case "2":
-                    System.out.println("Enter a new due date " + Colours.ANSI_RED.toString()
-                            + "yyyy-MM-dd" + Colours.ANSI_RESET.toString());
+                    view.changeDate();
                     String validDate = nextStep();
                     if ( !isValidDate(validDate) ) {
-                        System.out.println(Colours.ANSI_RED.toString() + "Invalid date, task was not created" +
-                                Colours.ANSI_RESET.toString());
+                       view.invalidDate();
                     } else {
                         toDoList.changeTaskDate(index, convertDate(validDate));
                     }
-                    System.out.println(Colours.ANSI_GREEN.toString() + "Due date has been changed"
-                            + Colours.ANSI_RESET.toString());
+                    view.changeSuccessful();
                     backToMenu = true;
                     break;
                 case "3":
-                    System.out.println("Change the task project");
+                    view.changeProject();
                     toDoList.changeProject(index, chooseProject());
-                    System.out.println(Colours.ANSI_GREEN.toString() + "Project has been changed"
-                            + Colours.ANSI_RESET.toString());
+                    view.changeSuccessful();
                     backToMenu = true;
                     break;
                 case "4":
-                    System.out.println(Colours.ANSI_GREEN.toString() + "The task is DONE now, "
-                            + Colours.ANSI_RESET.toString()
-                            + Colours.ANSI_RED.toString() + "don't forget to save changes at the end"
-                            + Colours.ANSI_RESET.toString());
+                    view.taskDone();
                     toDoList.changeStatus(index, true);
                     backToMenu = true;
                     break;
@@ -231,8 +187,7 @@ public class App {
                     backToMenu = true;
                     break;
                 default:
-                    System.out.println(Colours.ANSI_RED.toString() + "Sorry invalid option :( "
-                            + Colours.ANSI_RESET.toString());
+                    view.invalidOption();
                     modifyTasksMenu();
                     break;
             }
@@ -243,15 +198,13 @@ public class App {
      * Display a menu for task modification
      */
     private void modifyTasksMenu() {
-        System.out.println(Colours.ANSI_BLUE.toString() + "^^^^^^^^^^^^^^^^^^^^^^^^^" +
-                Colours.ANSI_RESET.toString());
+        view.taskFrame();
         String[] modifications = {"Edit task name", "Edit due date", "Change the project",
                 "Mark task as done", "Remove task", "Cancel"};
         for (int i = 0; i < modifications.length; i++) {
             System.out.println("(" + (i + 1) + ") " + modifications[i]);
         }
-        System.out.println(Colours.ANSI_BLUE.toString() + "^^^^^^^^^^^^^^^^^^^^^^^^^\n" +
-                Colours.ANSI_RESET.toString());
+        view.taskFrame();
     }
 
     /**
