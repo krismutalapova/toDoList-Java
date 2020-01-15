@@ -1,13 +1,11 @@
 public class View {
     private ToDoList toDoList;
-    private App app;
 
     /**
      * Constructor of View class.
      */
     public View() {
         toDoList = new ToDoList();
-        app = new App();
     }
 
 /**
@@ -44,7 +42,6 @@ public class View {
     public void printReturnMenu() {
         System.out.println(Colours.ANSI_BLUE.toString() + "Please, press any key to return to the menu :)"
                 + Colours.ANSI_RESET.toString());
-        app.nextStep();
     }
 
     /**

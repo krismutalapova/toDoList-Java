@@ -52,6 +52,7 @@ public class App {
                     break;
             }
             view.printReturnMenu();
+            nextStep();
         }
     }
 
